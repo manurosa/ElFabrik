@@ -8,9 +8,11 @@ namespace FactoryDP
 {
     class Factory
     {
-        public IMotor CreateInstance(string motorType)
+        public IMotor CreateInstance(int motorTypeKey)
         {
             IMotor output;
+
+            string motorType = motorTypes[motorTypeKey];
 
             if (motorType == "DieselMotor")
                 return output = new DieselMotor() { Brand = "BMW", Power = 200, Speed = 300 };
@@ -21,5 +23,11 @@ namespace FactoryDP
             return output = null;
         }
 
+        public Dictionary<int, string> motorTypes = new Dictionary<int, string>()
+        {
+            {1,"PetrolMotor" },
+            {2,"DieselMotor" }
+        };
+        
     }
 }
